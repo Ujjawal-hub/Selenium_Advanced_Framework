@@ -2,6 +2,7 @@ package pages.pageObjectModel.vwo;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import utils.WaitHelper;
 
 public class Loginpage {
 
@@ -25,6 +26,31 @@ public class Loginpage {
 
 //Page Actions
 
+ public String invalidloginvwo(String username ,String password){
+
+     driver.get("https://app.vwo.com/#/login");
+
+     driver.findElement(usernamelocator).sendKeys(username);
+     driver.findElement(passwordlocator).sendKeys(password);
+     driver.findElement(signinbuttonlocator).click();
+
+     WaitHelper.visiblityofelement(driver,loginerrormessage);
+
+     return driver.findElement(loginerrormessage).getText();
+
+ }
+
+    public void  validloginvwo(String username ,String password){
+
+        driver.get("https://app.vwo.com/#/login");
+
+        driver.findElement(usernamelocator).sendKeys(username);
+        driver.findElement(passwordlocator).sendKeys(password);
+        driver.findElement(signinbuttonlocator).click();
+
+
+
+    }
 
 
 
