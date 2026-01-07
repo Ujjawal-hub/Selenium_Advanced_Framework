@@ -93,11 +93,32 @@ public static void texttobepresent(WebDriver driver,By locator,String text,int t
 
     }
 
-    public static void clickiblityofelement(WebDriver driver,By locator){
+    public static void clickiblityofelement(WebDriver driver,By locator) {
 
-        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(3));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions.elementToBeClickable(locator));
-
     }
 
+     public static void presenceofelement(WebDriver driver,By locator){
+
+         WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(3));
+         wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
+    public static void presenceofelement(WebDriver driver,By locator,int time){
+
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(time));
+        wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
+
+    public static void presenceofelements(WebDriver driver,By locator){
+
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+    }
+
+    public static void presenceofelements(WebDriver driver,By locator,int time){
+
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(time));
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+    }
 }

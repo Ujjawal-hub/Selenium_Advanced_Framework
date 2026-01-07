@@ -2,6 +2,7 @@ package pages.pageObjectModel.vwo;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import utils.WaitHelper;
 
 public class Free_Trial_Page {
 
@@ -17,7 +18,22 @@ private By Check_box_l = By.id("page-free-trial-step1-cu-gdpr-consent-checkbox")
 private By Submit_button_l = By.xpath("//button[text()=\"Create a Free Trial Account\"]");
 private By error_message_l = By.xpath("//div[contains(@class,\"invalid-reason\")]");
 
-public String Fetching
+public String Fetching_error_message(String email){
+
+    driver.get("https://vwo.com/free-trial/");
+
+    WaitHelper.visiblityofelement(driver,input_email_l);
+
+    driver.findElement(input_email_l).sendKeys(email);
+    driver.findElement(Check_box_l).click();
+    driver.findElement(Submit_button_l);
+
+    WaitHelper.visiblityofelement(driver,error_message_l);
+
+    return  driver.findElement(error_message_l).getText();
+
+
+}
 
 
 
