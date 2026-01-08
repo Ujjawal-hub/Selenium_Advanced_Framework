@@ -1,11 +1,12 @@
 package pages.pageObjectModel.vwo;
 
+import base.Common_to_All_Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import utils.PropertiesReader;
 import utils.WaitHelper;
 
-public class Loginpage {
+public class Loginpage extends Common_to_All_Pages {
 
     //
     //Page locators
@@ -29,25 +30,25 @@ public class Loginpage {
 
  public String invalidloginvwo(String username ,String password){
 
-     driver.get(PropertiesReader.readKey("url"));
+     openurl(PropertiesReader.readKey("url"));
 
-     driver.findElement(usernamelocator).sendKeys(username);
-     driver.findElement(passwordlocator).sendKeys(password);
-     driver.findElement(signinbuttonlocator).click();
+     enterdetails(usernamelocator,username);
+     enterdetails(passwordlocator,password);
+     clickonelement(signinbuttonlocator);
 
      WaitHelper.visiblityofelement(driver,loginerrormessage);
 
-     return driver.findElement(loginerrormessage).getText();
+     return getTextfromelement(loginerrormessage);
 
  }
 
     public void  validloginvwo(String username ,String password){
 
-        driver.get("https://app.vwo.com/#/login");
+        openurl(PropertiesReader.readKey("url"));
+        enterdetails(usernamelocator,username);
+        enterdetails(passwordlocator,password);
+        clickonelement(signinbuttonlocator);
 
-        driver.findElement(usernamelocator).sendKeys(username);
-        driver.findElement(passwordlocator).sendKeys(password);
-        driver.findElement(signinbuttonlocator).click();
 
 
 
